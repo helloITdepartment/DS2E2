@@ -49,20 +49,20 @@ HuffmanTree::HuffmanTree(string text){
         }
         cout<< endl;
         
-        Node min = *(new Node((*nodeList.front()).value, (*nodeList.front()).frequency));
-        min.leftChild = (*nodeList.front()).leftChild;
-        min.rightChild = (*nodeList.front()).rightChild;
+        Node min = *nodeList.front();
         nodeList.remove(nodeList.front());
-        Node secondMin = *(new Node((*nodeList.front()).value, (*nodeList.front()).frequency));
-        secondMin.leftChild = (*nodeList.front()).leftChild;
-        secondMin.rightChild = (*nodeList.front()).rightChild;
+        Node secondMin = *nodeList.front();
         nodeList.remove(nodeList.front());
         
         //Join them together and put it back in
         Node nodeToPush = Node('*', (min.frequency + secondMin.frequency));
         
-        nodeToPush.rightChild = &(min);
-        nodeToPush.leftChild = &secondMin;
+        nodeToPush.rightChild = (new Node(min.value, min.frequency));
+        nodeToPush.rightChild->rightChild = min.rightChild;
+        nodeToPush.rightChild->leftChild = min.leftChild;
+        nodeToPush.leftChild = (new Node(secondMin.value, secondMin.frequency));
+        nodeToPush.leftChild->rightChild = secondMin.rightChild;
+        nodeToPush.leftChild->leftChild = secondMin.leftChild;
         nodeList.push_back(&nodeToPush);
         
 /*        //Find the least fequent character in the list
