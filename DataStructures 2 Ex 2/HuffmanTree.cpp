@@ -57,7 +57,7 @@ HuffmanTree::HuffmanTree(string text){
         //Join them together and put it back in
         Node nodeToPush = Node('*', (min.frequency + secondMin.frequency));
         
-        nodeToPush.rightChild = &min;
+        nodeToPush.rightChild = &(min);
         nodeToPush.leftChild = &secondMin;
         nodeList.push_back(&nodeToPush);
         
