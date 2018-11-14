@@ -49,9 +49,13 @@ HuffmanTree::HuffmanTree(string text){
         }
         cout<< endl;
         
-        Node min = *nodeList.front();
+        Node min = *(new Node((*nodeList.front()).value, (*nodeList.front()).frequency));
+        min.leftChild = (*nodeList.front()).leftChild;
+        min.rightChild = (*nodeList.front()).rightChild;
         nodeList.remove(nodeList.front());
-        Node secondMin = *nodeList.front();
+        Node secondMin = *(new Node((*nodeList.front()).value, (*nodeList.front()).frequency));
+        secondMin.leftChild = (*nodeList.front()).leftChild;
+        secondMin.rightChild = (*nodeList.front()).rightChild;
         nodeList.remove(nodeList.front());
         
         //Join them together and put it back in
