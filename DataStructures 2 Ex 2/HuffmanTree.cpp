@@ -103,6 +103,11 @@ HuffmanTree::HuffmanTree(string text){
     root = *nodeList.front();
     
     encodeTheTree(root, "");
+    for(int i = 0; i<256; i++){
+        if(encodingList[i] != ""){
+            cout<< (char) i << ": " << encodingList[i] <<". ";
+        }
+    }
 };
 
 void HuffmanTree::encodeTheTree(Node node, string encodingSoFar){
